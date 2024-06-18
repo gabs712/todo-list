@@ -36,7 +36,8 @@ const config = {
         use: [
           MiniCssExtractPlugin.loader,
           'css-loader',
-          'sass-loader'
+          'resolve-url-loader',
+          'sass-loader',
         ]
       },
       {
