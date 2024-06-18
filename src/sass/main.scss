@@ -1,7 +1,10 @@
 @use 'base/reset.scss';
-@use 'base/body.scss';
+@use 'base/fonts.scss';
+@use 'base/base.scss';
 
 @use 'layout/container.scss';
 @use 'layout/header.scss';
 @use 'layout/sidebar.scss';
 @use 'layout/content.scss';
+
+@use 'components/logo.scss';

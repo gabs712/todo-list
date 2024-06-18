@@ -1,0 +1,7 @@
+@use '../abstracts/colors.scss';
+
+.content {
+  grid-area: content;
+  overflow: auto;
+  background-color: colors.$content;
+}

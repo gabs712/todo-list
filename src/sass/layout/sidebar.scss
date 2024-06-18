@@ -1,0 +1,7 @@
+@use '../abstracts/colors.scss';
+
+.sidebar {
+  grid-area: sidebar;
+  background-color: colors.$sidebar;
+  overflow: auto;
+}
