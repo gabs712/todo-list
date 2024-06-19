@@ -1,5 +1,5 @@
-@use '../abstracts/colors.scss';
+@use '../abstracts/index.scss' as *;
 
 body {
-  background-color: colors.$body-background;
+  background-color: $background-color;
 }

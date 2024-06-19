@@ -1,10 +1,5 @@
 .container {
   display: grid;
-  grid-template-columns: minmax(10rem, 18%) 1fr;
-  grid-template-rows: auto 1fr;
-  grid-template-areas: 
-    'header header'
-    'sidebar content'
-  ;
+  grid-template-columns: auto 1fr;
   height: 100svh;
 }

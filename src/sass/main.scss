@@ -1,10 +1,11 @@
 @use 'base/reset.scss';
-@use 'base/fonts.scss';
+@use 'base/font-face.scss';
 @use 'base/base.scss';
 
 @use 'layout/container.scss';
-@use 'layout/header.scss';
 @use 'layout/sidebar.scss';
 @use 'layout/content.scss';
 
 @use 'components/logo.scss';
+@use 'components/project-nav.scss';
+@use 'components/labels.scss';

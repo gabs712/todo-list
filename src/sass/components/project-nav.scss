@@ -1,0 +1,33 @@
+@use 'sass:color';
+@use '../abstracts/index.scss' as *;
+
+.project-nav {
+  $el-gap: .3rem;
+
+  display: grid;
+  gap: $el-gap;
+
+  &__title {
+    font-size: 1.1rem;
+    font-weight: bold;
+  }
+
+  &__content {
+    font-size: .91rem;
+    margin-left: 6.4px;
+    border-left: 2px dotted rgb(217, 233, 42);
+    padding-left: 7px;
+    display: grid;
+    gap: $el-gap;
+  }
+  
+  &__item {
+    &:hover {
+      @include select-item(hover);
+    }
+
+    &--selected {
+      @include select-item(selected);
+    }
+  }
+}

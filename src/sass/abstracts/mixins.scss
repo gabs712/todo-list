@@ -1,0 +1,27 @@
+@use 'sass:color';
+
+@mixin select-item($color-style) {
+  $color: null; 
+
+  @if $color-style == hover {
+    $color: rgb(black, .02);
+  }
+  @else if $color-style == selected {
+    $color: rgb(black, .04)
+  }
+  cursor: pointer;
+
+  &::before, &:active::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 1lh;
+    background-color: $color;
+  }
+
+  &:active::before {
+    background-color: color.scale($color, $alpha: 2%);   
+  }
+}
+

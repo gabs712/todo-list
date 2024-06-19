@@ -1,7 +1,19 @@
-@use '../abstracts/colors.scss';
+@use '../abstracts/index.scss' as *;
+
 
 .sidebar {
-  grid-area: sidebar;
-  background-color: colors.$sidebar;
+  background-color: $primary-color;
   overflow: auto;
+  padding: .8rem;
+  color: $background-color;
+  font-family: Ubuntu;
+  display: grid;
+  gap: .9rem;
+  align-content: start;
+  position: relative;
+
+  &__group {
+    display: grid;
+    gap: .4rem;
+  }
 }

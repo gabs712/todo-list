@@ -1,15 +1,12 @@
-@use '../abstracts/colors.scss';
-
 .logo {
   display: flex;
   align-items: center;
   gap: .25rem;
   font-family: Ubuntu;
-  filter: drop-shadow(3px 3px 2px rgba(black, 0.2));
   
   &__txt {
-    color: colors.$body-background;
     font-weight: bold;
+    font-style: italic;
     font-size: 1.6rem;
     letter-spacing: .1rem;
   }

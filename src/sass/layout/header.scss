@@ -1,9 +1,0 @@
-@use '../abstracts/colors.scss';
-
-.header {
-  grid-area: header;
-  background-color: colors.$header;
-  display: grid;
-  place-content: center;
-  padding: .4rem;
-}
