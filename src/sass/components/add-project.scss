@@ -3,7 +3,7 @@
 
 .add-project {
   display: grid;
-  background-color: color.scale($primary-color, $lightness: -12%);
+  background-color: $secondary-color;
   padding: $sidebar-padding;
   gap: .2rem;
   

@@ -8,7 +8,7 @@
   font-size: 1.5rem;
   width: $size;
   height: $size;
-  border-radius: 50%;
+  border-radius: calc($size / 2);
   color: $sidebar-text-color;
   display: flex;
   justify-content: center;

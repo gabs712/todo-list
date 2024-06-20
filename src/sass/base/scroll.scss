@@ -1,0 +1,22 @@
+@use '../abstracts/index.scss' as *;
+@use 'sass:color';
+
+.sidebar__navigation::-webkit-scrollbar {
+  $thumb-background: rgb(70, 216, 189);
+
+  background-color: $secondary-color;
+  width: .45rem;
+
+  &-thumb {
+    background-color: $thumb-background;
+    border-radius: 1rem;
+
+    &:hover {
+      background-color: color.scale($thumb-background, $lightness: 15%);
+    }
+
+    &:active {
+      background-color: color.scale($thumb-background, $lightness: 40%);
+    }
+  }
+}

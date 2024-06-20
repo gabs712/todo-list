@@ -1,5 +1,8 @@
+@use 'sass:color';
+
 $background-color: #f2f5f7;
 $sidebar-text-color: $background-color;
 $primary-color: rgb(14, 181, 252);
+$secondary-color: color.scale($primary-color, $lightness: -12%);
 
 $sidebar-padding: .8rem;

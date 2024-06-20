@@ -4,7 +4,7 @@
   background-color: $primary-color;
   color: $sidebar-text-color;
   display: grid;
-  box-shadow: 0 0 8px rgb(black, .4);
+  box-shadow: 0 0 .4rem rgb(black, .4);
   height: 100svh;
   
   &__navigation {
