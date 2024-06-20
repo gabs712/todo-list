@@ -1,0 +1,19 @@
+@use '../abstracts/index.scss' as *;
+@use 'sass:color';
+
+.input {
+  background-color: $sidebar-text-color;
+  border: none;
+  width: 0;
+  flex: 1;
+  height: 1.45rem;
+  border-radius: .2rem;
+  font-size: .65rem;
+  padding-inline: .6rem;
+  color: color.scale(black, $lightness: 35%);
+  font-size: .7rem;
+  
+  &:focus {
+    outline: none;
+  }
+}

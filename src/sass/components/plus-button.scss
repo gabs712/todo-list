@@ -1,0 +1,28 @@
+@use '../abstracts/index.scss' as *;
+@use 'sass:color';
+
+.plus-button {
+  $size: 1.7rem;
+  $background-color: rgb(44, 212, 173);
+
+  font-size: 1.5rem;
+  width: $size;
+  height: $size;
+  border-radius: 50%;
+  color: $sidebar-text-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  cursor: pointer;
+  background-color: $background-color;
+
+
+  &:hover {
+    background-color: color.scale($background-color, $lightness: 10%);
+  }
+
+  &:active {
+    background-color: color.scale($background-color, $lightness: 25%);
+  }
+}

@@ -1,19 +1,28 @@
 @use '../abstracts/index.scss' as *;
 
-
 .sidebar {
   background-color: $primary-color;
-  overflow: auto;
-  padding: .8rem;
-  color: $background-color;
-  font-family: Ubuntu;
+  color: $sidebar-text-color;
   display: grid;
-  gap: .9rem;
-  align-content: start;
-  position: relative;
+  box-shadow: 0 0 8px rgb(black, .4);
+  height: 100svh;
+  
+  &__navigation {
+    overflow: auto;
+    padding: $sidebar-padding;
+    font-family: Ubuntu;
+    display: grid;
+    gap: .9rem;
+    align-content: start;
+    position: relative;
+  }
 
   &__group {
     display: grid;
     gap: .4rem;
+  }
+
+  &__control {
+    align-self: end;
   }
 }

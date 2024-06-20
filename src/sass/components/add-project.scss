@@ -1,0 +1,22 @@
+@use '../abstracts/index.scss' as *;
+@use 'sass:color';
+
+.add-project {
+  display: grid;
+  background-color: color.scale($primary-color, $lightness: -12%);
+  padding: $sidebar-padding;
+  gap: .2rem;
+  
+  &__header {
+    font-size: .75rem;
+    font-weight: bold;
+    letter-spacing: .02rem;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    gap: .7rem;
+    justify-content: space-between;
+  }
+}
