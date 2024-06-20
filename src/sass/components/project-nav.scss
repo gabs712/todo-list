@@ -31,8 +31,8 @@
     &:hover {
       @include select-item(hover);
     }
-
-    &--selected {
+    
+    &--select {
       @include select-item(selected);
     }
   }

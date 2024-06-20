@@ -4,16 +4,13 @@
   font-size: 1.1rem;
   font-weight: bold;
 
-  &--interactive {
-    @extend .section-title;
-
+  &--hover {
     &:hover {
       @include select-item(hover);
     }
+  }
 
-    &--selected {
-      @extend .section-title;
-      @include select-item(selected);
-    }
+  &--select {
+    @include select-item(selected);
   }
 }

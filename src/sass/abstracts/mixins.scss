@@ -1,5 +1,6 @@
 @use 'sass:color';
 
+// Select effect for the sidebar
 @mixin select-item($color-style) {
   $color: null; 
 
