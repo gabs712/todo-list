@@ -1,4 +1,7 @@
 .content {
+  overflow: auto;
+  will-change: transform;
+
   &__info {
     padding-block: 2rem;
     padding-inline: 1rem;
