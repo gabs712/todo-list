@@ -6,6 +6,13 @@
   display: grid;
   gap: 1rem;
 
+  &__title {
+    max-width: 18ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   &__card {
     box-shadow: 0 0 .2rem rgb(black, .2);
     padding: .6rem;
