@@ -17,7 +17,6 @@
   cursor: pointer;
   background-color: $background-color;
 
-
   &:hover {
     background-color: color.scale($background-color, $lightness: 10%);
   }

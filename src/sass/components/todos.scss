@@ -1,0 +1,31 @@
+.todos {
+  $radius: .3rem;
+  margin: auto;
+  max-width: 60rem;
+  border-radius: $radius;
+  display: grid;
+  gap: 1rem;
+
+  &__card {
+    background-color: rgb(225, 225, 225);
+    padding: .6rem;
+    display: grid;
+    gap: .4rem;
+    border-radius: $radius;
+    cursor: pointer;
+  }
+
+  &__unexpanded {
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__expanded {
+    display: none;
+
+    &--show {
+      display: block;
+    }
+  }
+}

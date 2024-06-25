@@ -4,8 +4,6 @@
 .input {
   background-color: $sidebar-text-color;
   border: none;
-  width: 0;
-  flex: 1;
   height: 1.45rem;
   border-radius: .2rem;
   font-size: .65rem;
@@ -15,5 +13,10 @@
   
   &:focus {
     outline: none;
+  }
+
+  &--flex {
+    width: 0;
+    flex: 1;
   }
 }

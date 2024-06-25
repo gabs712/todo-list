@@ -1,0 +1,9 @@
+.close-button {
+  $size: 2rem;
+  
+  width: $size;
+  height: $size;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+}

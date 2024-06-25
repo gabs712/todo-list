@@ -6,6 +6,8 @@
 @use 'layout/container.scss';
 @use 'layout/sidebar.scss';
 @use 'layout/content.scss';
+@use 'layout/header.scss';
+@use 'layout/modal.scss';
 
 @use 'components/logo.scss';
 @use 'components/project-nav.scss';
@@ -13,3 +15,6 @@
 @use 'components/add-project.scss';
 @use 'components/input.scss';
 @use 'components/plus-button.scss';
+@use 'components/close-button.scss';
+@use 'components/add-todo-button.scss';
+@use 'components/todos.scss';

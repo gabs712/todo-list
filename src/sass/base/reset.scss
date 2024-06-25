@@ -3,6 +3,10 @@
   word-break: break-word; /*works better than overflow-wrap: break-word;*/
 }
 
+*:not(dialog) {
+  margin: 0;
+}
+
 body {
   margin: 0;
   line-height: 1.5;
