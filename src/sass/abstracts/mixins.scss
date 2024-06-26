@@ -19,6 +19,7 @@
     right: 0;
     height: 1lh;
     background-color: $color;
+    pointer-events: none;
   }
 
   &:active::before {

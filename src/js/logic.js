@@ -10,13 +10,14 @@ class Project {
     this.projects.push(todo)
   }
 
-  static delete(item) {
+  static remove(item) {
     for (const [i, project] of this.projects.entries()) {
       if (item === project) {
         this.projects.splice(i, 1)
         return true
       }
     }
+    return false
   }
 }
 
