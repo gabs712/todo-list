@@ -1,2 +1,2 @@
-import './dom/modal'
+import './visual-effects'
 import './todo'
