@@ -7,6 +7,13 @@
   align-items: center;
   justify-content: space-between;
 
+  &__project-name {
+    max-width: 18ch;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
   .plus-button {
     margin-right: 2rem;
   }
