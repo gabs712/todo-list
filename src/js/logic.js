@@ -2,21 +2,21 @@ class Project {
   static projects = []
 
   static isAddble(item) {
-    if (!this.projects.includes(item)) return false
+    if (this.projects.includes(item)) return false
     return true
   }
 
-  static addProject(todo) {
+  static add(todo) {
     this.projects.push(todo)
   }
 
-  static deleteProject(item) {
+  static delete(item) {
     for (const [i, project] of this.projects.entries()) {
       if (item === project) {
         this.projects.splice(i, 1)
+        return true
       }
     }
-    alert('Something went wrong when trying to delete')
   }
 }
 
@@ -54,17 +54,18 @@ class Todo {
     return true
   }
 
-  static addTodo(obj) {
+  static add(obj) {
     this.todos.push(obj)
   }
 
-  static deleteTodo(title, project) {
+  static delete(title, project) {
     for (const [i, todo] of this.todos.entries()) {
       if (todo.title === title && todo.project === project) {
         todo.splice(i, 1)
         return
       }
     }
-    alert('Something went wrong when trying to delete')
   }
 }
+
+export {Project, Todo}
