@@ -66,13 +66,16 @@ class Todo {
     this.todos.push(obj)
   }
 
-  static delete(title, project) {
+  static remove(title, project) {
     for (const [i, todo] of this.todos.entries()) {
       if (todo.title === title && todo.project === project) {
-        todo.splice(i, 1)
+        console.log(this.todos)
+        this.todos.splice(i, 1)
+        console.log(this.todos)
         return
       }
     }
+    alert('Something went wrong when deleting')
   }
 }
 

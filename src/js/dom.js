@@ -105,8 +105,8 @@ class TodoList {
 
   static #generateElement(todo) {
     const template = `
-      <div data-todos__card class="todos__card">
-        <div data-todos__delete-todo class="todos__delete-todo">&#x2716</div>
+      <div data-todo-name='${todo.title}' data-todos__card class="todos__card">
+        <div data-delete-todo class="todos__delete-todo">&#x2716</div>
         <div class="todos__unexpanded">
           <div class="todos__title">${todo.title}</div>
           <div class="todos__priority">${todo.priority}</div>
@@ -117,15 +117,25 @@ class TodoList {
     `
     const div = document.createElement('div')
     div.innerHTML = template
+
     const expandable = div.querySelector('[data-todos__expanded]')
+    const deleteButton = div.querySelector('[data-delete-todo]')
     
     div.addEventListener('click', () => {
       expandable.classList.toggle('todos__expanded--show')   
     })
 
+    deleteButton.addEventListener('click', this.remove.bind(this, div))
+
     return div
   }
 
+  static remove(element) {
+    const card = element.querySelector('[data-todo-name]')
+
+    Todo.remove(card.dataset.todoName, Page.currentProject)
+    element.remove()
+  }
 
   static refresh() {
     this.#todoCards.innerHTML = ''
