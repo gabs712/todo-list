@@ -38,7 +38,7 @@
     </aside>
     <div class="content">
       <header class="header">
-        <h1 class="header__project-name">Morning</h1>
+        <h1 data-project-name class="header__project-name">Morning</h1>
         <button data-open-modal class="plus-button">+</button>
       </header>
         <dialog data-modal class="modal">
@@ -46,20 +46,20 @@
             <h1>Add Todo</h1>
             <button data-close-modal class="close-button">&#x2716</button>
           </div>
-          <form data-form class="modal__form">
+          <form data-todo-form class="modal__form">
             <div class="modal__text-inputs">
               <label for="title">Title</label>
-              <input required class="modal__input">
+              <input name="title" id="title" required class="modal__input">
               <label for="description">Description</label>
-              <input required class="modal__input">
+              <input name="description" id="description" required class="modal__input">
               <label for="dueDate">Due date</label>
-              <input required type="date" class="modal__input">
+              <input name="dueDate" id="dueDate" required type="date" class="modal__input">
             </div>
-            <div>
-              <label for="priority">Priority</label>
+            <fieldset>
+              <legend>Priority</legend>
               <div class="modal__radios">
                 <div>
-                  <input value="low" name="priority" type="radio" id="low">
+                  <input required value="low" name="priority" type="radio" id="low">
                   <label for="low">Low</label>
                 </div>
                 <div>
@@ -71,57 +71,12 @@
                   <label for="high">High</label>
                 </div>
               </div>
-            </div>
+            </fieldset>
             <button class="add-todo-button">Add todo</button>
           </form>
         </dialog>
       <main class="content__info">
-        <div class="todos">
-          <div data-todos__card class="todos__card">
-            <div data-todos__delete-todo class="todos__delete-todo">&#x2716</div>
-            <div class="todos__unexpanded">
-              <div class="todos__title">Games</div>
-              <div class="todos__priority">Medium</div>
-              <div class="todos__due">11/11/1123</div>
-            </div>
-            <div data-todos__expanded class="todos__expanded">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, sed ex aspernatur provident illo officia? Mollitia architecto quasi sit voluptate.
-            </div>
-          </div>
-          <div data-todos__card class="todos__card">
-            <div data-todos__delete-todo class="todos__delete-todo">&#x2716</div>
-            <div class="todos__unexpanded">
-              <div class="todos__title">Games</div>
-              <div class="todos__priority">Medium</div>
-              <div class="todos__due">11/11/1123</div>
-            </div>
-            <div data-todos__expanded class="todos__expanded">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, sed ex aspernatur provident illo officia? Mollitia architecto quasi sit voluptate.
-            </div>
-          </div>
-          <div data-todos__card class="todos__card">
-            <div data-todos__delete-todo class="todos__delete-todo">&#x2716</div>
-            <div class="todos__unexpanded">
-              <div class="todos__title">Games</div>
-              <div class="todos__priority">Medium</div>
-              <div class="todos__due">11/11/1123</div>
-            </div>
-            <div data-todos__expanded class="todos__expanded">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, sed ex aspernatur provident illo officia? Mollitia architecto quasi sit voluptate.
-            </div>
-          </div>
-          <div data-todos__card class="todos__card">
-            <div data-todos__delete-todo class="todos__delete-todo">&#x2716</div>
-            <div class="todos__unexpanded">
-              <div class="todos__title">Games</div>
-              <div class="todos__priority">Medium</div>
-              <div class="todos__due">11/11/1123</div>
-            </div>
-            <div data-todos__expanded class="todos__expanded">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Repudiandae, sed ex aspernatur provident illo officia? Mollitia architecto quasi sit voluptate.
-            </div>
-          </div>
-        </div>
+        <div data-todo-cards class="todos"></div>
       </main>
     </div>
   </div>

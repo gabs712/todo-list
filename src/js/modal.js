@@ -9,14 +9,7 @@ closeModal.addEventListener('click', () => {
   modal.close()
 })
 
-const form = document.querySelector('[data-form]')
+const form = document.querySelector('[data-todo-form]')
 form.addEventListener('submit', () => {
   modal.close()
 })
-
-const expandableCards = document.querySelectorAll('[data-todos__expanded]')
-for (const expandableCard of expandableCards) {
-  expandableCard.closest('[data-todos__card]').addEventListener('click', () => {
-    expandableCard.classList.toggle('todos__expanded--show')   
-  })
-}

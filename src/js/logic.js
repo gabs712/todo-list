@@ -1,5 +1,14 @@
+class Page {
+  static currentProject = 'default'
+
+  static setCurrentProject(project) {
+    this.currentProject = project
+  }
+}
+
 class Project {
-  static projects = []
+  // Default initial project (i.e home)
+  static projects = [Symbol('home')]
 
   static isAddble(item) {
     if (this.projects.includes(item)) return false
@@ -21,14 +30,13 @@ class Project {
   }
 }
 
-
 class Todo {
   static todos = []
 
-  constructor(title, description, due, priority, project) {
+  constructor(title, description, dueDate, priority, project) {
     this.title = title
     this.description = description
-    this.due = due
+    this.dueDate = dueDate
     this.priority = priority
     this.project = project
   }
@@ -69,4 +77,4 @@ class Todo {
   }
 }
 
-export {Project, Todo}
+export {Page, Project, Todo}

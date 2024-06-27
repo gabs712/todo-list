@@ -1,8 +1,9 @@
-import {Project, Todo} from './logic'
+import {Page, Project, Todo} from './logic'
 
 class ProjectList {
   static #projectInput = document.querySelector('[data-project-input]')
   static #projectList = document.querySelector('[data-project-list]')
+
 
   static #generateElement(projectName) {
     const template = `
@@ -11,14 +12,17 @@ class ProjectList {
         <div data-remove-project class="project-nav__close"></div>
       </div>
     `
-    let div = document.createElement('div')
+    const div = document.createElement('div')
     div.innerHTML = template
-    div = div.firstElementChild   
 
     const project = div.querySelector('[data-project]')
     const removeProject = div.querySelector('[data-remove-project]')
 
-    removeProject.addEventListener('click', this.remove.bind(this, projectName))
+    removeProject.addEventListener('click', this.remove.bind(this, projectName)) 
+    project.addEventListener('click', () => {
+      Page.setCurrentProject(projectName)
+      TodoList.refresh()
+    })
 
     return div
   }
@@ -51,7 +55,7 @@ class ProjectList {
     this.refresh()
   }
 
-  static handleInputSubmit(e) {
+  static handleSubmit(e) {
     e.preventDefault()
 
     const value = this.#projectInput.value
@@ -62,4 +66,74 @@ class ProjectList {
 
 }
 
-export {ProjectList}
+class TodoList {
+  static #todoForm = document.querySelector('[data-todo-form]')
+  static #todoCards = document.querySelector('[data-todo-cards')
+  static #projectName = document.querySelector('[data-project-name]')
+
+  static #generateElement(todo) {
+    const template = `
+      <div data-todos__card class="todos__card">
+        <div data-todos__delete-todo class="todos__delete-todo">&#x2716</div>
+        <div class="todos__unexpanded">
+          <div class="todos__title">${todo.title}</div>
+          <div class="todos__priority">${todo.priority}</div>
+          <div class="todos__due">${todo.dueDate}</div>
+        </div>
+        <div data-todos__expanded class="todos__expanded">${todo.description}</div>
+      </div>
+    `
+    const div = document.createElement('div')
+    div.innerHTML = template
+    const expandable = div.querySelector('[data-todos__expanded]')
+    
+    expandable.addEventListener('click', () => {
+      expandable.classList.toggle('todos__expanded--show')   
+    })
+
+    return div
+  }
+
+  static refresh() {
+    this.#todoCards.innerHTML = ''
+    this.#projectName.innerText = Page.currentProject
+
+    for (const todo of Todo.todos) {
+      if (todo.project === Page.currentProject) {
+        const element = this.#generateElement(todo)
+
+        this.#todoCards.insertAdjacentElement('afterbegin', element)
+      }
+    }
+  }
+
+  static add(...values) {
+    const todo = new Todo(...values)
+    
+    if (!Todo.isAddble(todo)) {
+      alert('Invalid todo')
+      return
+    }
+
+    Todo.add(todo)
+
+    if (Page.currentProject === todo.project) this.refresh()
+  }
+
+  static handleSubmit(e) {
+    e.preventDefault()
+    const todoForm = new FormData(this.#todoForm)
+    this.#todoForm.reset()
+
+    const formValues = [
+      todoForm.get('title'),
+      todoForm.get('description'),
+      todoForm.get('dueDate'),
+      todoForm.get('priority'),
+    ]
+
+    this.add(...formValues, Page.currentProject)
+  }
+}
+
+export {ProjectList, TodoList}
