@@ -1,13 +1,35 @@
 import {Page, Project, Todo} from './logic'
 
+class PageDom {
+  static refresh() {
+    TodoList.refresh()   
+    ProjectList.refresh()
+  }
+}
+
 class ProjectList {
   static #projectInput = document.querySelector('[data-project-input]')
   static #projectList = document.querySelector('[data-project-list]')
+  static #projectName = document.querySelector('[data-project-name]')
+
+  static highlightCurrent() {
+    this.#projectName.innerText = Page.currentProject
+
+    const projects = document.querySelectorAll('[data-project]')
+
+    for (const project of projects) {
+      if (project.dataset.project === Page.currentProject) {
+        project.classList.add('project-nav__item--select')
+      } else {
+        project.classList.remove('project-nav__item--select')
+      }
+    }
+  }
 
 
   static #generateElement(projectName) {
     const template = `
-      <div data-project class="project-nav__item">
+      <div data-project='${projectName}' class="project-nav__item">
         <div class="project-nav__text">${projectName}</div>
         <div data-remove-project class="project-nav__close"></div>
       </div>
@@ -18,10 +40,14 @@ class ProjectList {
     const project = div.querySelector('[data-project]')
     const removeProject = div.querySelector('[data-remove-project]')
 
-    removeProject.addEventListener('click', this.remove.bind(this, projectName)) 
+    removeProject.addEventListener('click', (e) => {
+      e.stopPropagation()
+      this.remove(projectName)
+    }) 
+
     project.addEventListener('click', () => {
       Page.setCurrentProject(projectName)
-      TodoList.refresh()
+      PageDom.refresh()
     })
 
     return div
@@ -31,12 +57,13 @@ class ProjectList {
     this.#projectList.innerHTML = ''
     
     for (const project of Project.projects) {
-      // Omit default projects (i.e Home)
-      if (typeof project === 'symbol') continue
+      if (project === 'Home') continue 
 
       const element = this.#generateElement(project)
       this.#projectList.insertAdjacentElement('afterbegin', element)
     }
+
+    ProjectList.highlightCurrent()
   }
 
   static add(projectName) {
@@ -52,7 +79,14 @@ class ProjectList {
 
   static remove(projectName) {
     Project.remove(projectName)
-    this.refresh()
+    //todo: remove todos also   
+
+    if (projectName === Page.currentProject) {
+      Page.currentProject = 'Home'
+      PageDom.refresh()
+    } else {
+      this.refresh()
+    }
   }
 
   static handleSubmit(e) {
@@ -63,13 +97,11 @@ class ProjectList {
 
     this.add(value)
   }
-
 }
 
 class TodoList {
   static #todoForm = document.querySelector('[data-todo-form]')
   static #todoCards = document.querySelector('[data-todo-cards')
-  static #projectName = document.querySelector('[data-project-name]')
 
   static #generateElement(todo) {
     const template = `
@@ -87,16 +119,16 @@ class TodoList {
     div.innerHTML = template
     const expandable = div.querySelector('[data-todos__expanded]')
     
-    expandable.addEventListener('click', () => {
+    div.addEventListener('click', () => {
       expandable.classList.toggle('todos__expanded--show')   
     })
 
     return div
   }
 
+
   static refresh() {
     this.#todoCards.innerHTML = ''
-    this.#projectName.innerText = Page.currentProject
 
     for (const todo of Todo.todos) {
       if (todo.project === Page.currentProject) {
@@ -136,4 +168,15 @@ class TodoList {
   }
 }
 
-export {ProjectList, TodoList}
+class Home {
+  static #home = document.querySelector('[data-project="Home"]') 
+
+  static setup() {
+    this.#home.addEventListener('click', () => {
+      Page.setCurrentProject('Home')
+      PageDom.refresh()
+    })
+  }
+}
+
+export {ProjectList, TodoList, PageDom, Home}

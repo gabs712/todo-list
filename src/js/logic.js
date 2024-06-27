@@ -7,8 +7,7 @@ class Page {
 }
 
 class Project {
-  // Default initial project (i.e home)
-  static projects = [Symbol('home')]
+  static projects = []
 
   static isAddble(item) {
     if (this.projects.includes(item)) return false
