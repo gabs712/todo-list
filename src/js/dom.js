@@ -79,7 +79,6 @@ class ProjectList {
 
   static remove(projectName) {
     Project.remove(projectName)
-    //todo: remove todos also   
 
     if (projectName === Page.currentProject) {
       Page.currentProject = 'Home'
@@ -153,7 +152,7 @@ class TodoList {
     const todo = new Todo(...values)
     
     if (!Todo.isAddble(todo)) {
-      alert('Invalid todo')
+      alert('Another Todo already has this title on the project')
       return
     }
 

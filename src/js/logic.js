@@ -19,6 +19,8 @@ class Project {
   }
 
   static remove(item) {
+    Todo.removeAllFromProject(item)
+
     for (const [i, project] of this.projects.entries()) {
       if (item === project) {
         this.projects.splice(i, 1)
@@ -49,7 +51,7 @@ class Todo {
   }
 
   static #hasSameTitle(obj, todo) {
-    obj.title === todo.title
+    return obj.title === todo.title
   }
 
   static isAddble(obj) {
@@ -66,12 +68,18 @@ class Todo {
     this.todos.push(obj)
   }
 
+  static removeAllFromProject(project) {
+    for (const [i, todo] of this.todos.entries()) {
+      if (todo.project === project) {
+        this.todos.splice(i, 1)
+      }
+    }
+  }
+
   static remove(title, project) {
     for (const [i, todo] of this.todos.entries()) {
       if (todo.title === title && todo.project === project) {
-        console.log(this.todos)
         this.todos.splice(i, 1)
-        console.log(this.todos)
         return
       }
     }
