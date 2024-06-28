@@ -69,21 +69,11 @@ class Todo {
   }
 
   static removeAllFromProject(project) {
-    for (const [i, todo] of this.todos.entries()) {
-      if (todo.project === project) {
-        this.todos.splice(i, 1)
-      }
-    }
+    this.todos = this.todos.filter((todo) => todo.project !== project) 
   }
 
   static remove(title, project) {
-    for (const [i, todo] of this.todos.entries()) {
-      if (todo.title === title && todo.project === project) {
-        this.todos.splice(i, 1)
-        return
-      }
-    }
-    alert('Something went wrong when deleting')
+    this.todos = this.todos.filter((todo) => todo.title !== title && todo.project !== project)
   }
 }
 
