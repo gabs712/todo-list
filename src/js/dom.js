@@ -104,15 +104,13 @@ class TodoList {
   static #todoCards = document.querySelector('[data-todo-cards')
 
   static #generateElement(todo) {
-    const formatedDueDate = format(parseISO(todo.dueDate), `MMM do, yyyy`)
-
     const template = `
       <div data-todo-name='${todo.title}' data-todos__card class="todos__card">
         <div data-delete-todo class="todos__delete-todo">&#x2716</div>
         <div class="todos__unexpanded">
           <div class="todos__title">${todo.title}</div>
           <div class="todos__priority">${todo.priority}</div>
-          <div class="todos__due">${formatedDueDate}</div>
+          <div class="todos__due">${todo.dueDate}</div>
         </div>
         <div data-todos__expanded class="todos__expanded">${todo.description}</div>
       </div>
@@ -152,8 +150,19 @@ class TodoList {
   }
 
   static add(...values) {
-    const todo = new Todo(...values)
+    const dueDate = values[2]
     
+    let formatedDueDate
+    try {
+      formatedDueDate = format(parseISO(dueDate), `MMM do, yyyy`)
+    } catch (error) {
+      alert(error.message)
+      return
+    }
+
+    values[2] = formatedDueDate
+    
+    const todo = new Todo(...values)
     if (!Todo.isAddble(todo)) {
       alert('Another Todo already has this title on the project')
       return
