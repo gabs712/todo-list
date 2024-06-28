@@ -1,5 +1,5 @@
 class Page {
-  static currentProject = 'default'
+  static currentProject
 
   static setCurrentProject(project) {
     this.currentProject = project
