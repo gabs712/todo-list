@@ -56,7 +56,6 @@ class ProjectList {
 
   static refresh() {
     this.#projectList.innerHTML = ''
-    
     for (const project of Project.projects) {
       if (project === 'Home') continue 
 

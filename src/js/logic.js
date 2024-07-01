@@ -2,20 +2,53 @@ class Page {
   static currentProject
 
   static setCurrentProject(project) {
-    this.currentProject = project
+    Storage.setCurrentProject(project)
+    this.currentProject = Storage.getCurrentProject()
+  }
+}
+
+class Storage {
+  static setCurrentProject(project) {
+    localStorage.setItem('currentProject', project)
+  }
+
+  static getCurrentProject() {
+    return localStorage.getItem('currentProject')
+  }
+  
+  static #hasProperty(property) {
+    return localStorage.getItem(property) !== null
+  }
+
+  static add(property, value) {
+    if (!this.#hasProperty(property)) {
+      localStorage.setItem(property, '[]')
+    }
+
+    const storageValues = JSON.parse(localStorage.getItem(property))
+    storageValues.push(value)
+
+    const stringfied = JSON.stringify(storageValues)
+    localStorage.setItem(property, stringfied)
+  }
+
+  static get(property) {
+    if (!this.#hasProperty(property)) return []
+    return JSON.parse(localStorage.getItem(property))
   }
 }
 
 class Project {
-  static projects = []
+  static projects = Storage.get('projects') 
 
   static isAddble(item) {
     if (this.projects.includes(item)) return false
     return true
   }
 
-  static add(todo) {
-    this.projects.push(todo)
+  static add(project) {
+    Storage.add('projects', project)
+    this.projects = Storage.get('projects')
   }
 
   static remove(item) {
@@ -32,7 +65,7 @@ class Project {
 }
 
 class Todo {
-  static todos = []
+  static todos = Storage.get('todos')
 
   constructor(title, description, dueDate, priority, project) {
     this.title = title
@@ -65,7 +98,8 @@ class Todo {
   }
 
   static add(obj) {
-    this.todos.push(obj)
+    Storage.add('todos', obj)
+    this.todos = Storage.get('todos')
   }
 
   static removeAllFromProject(project) {
@@ -77,4 +111,4 @@ class Todo {
   }
 }
 
-export {Page, Project, Todo}
+export {Page, Project, Todo, Storage  }

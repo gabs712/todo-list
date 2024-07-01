@@ -1,3 +1,3 @@
-import './home'
+import './startup'
 import './actions'
 import './modal'
