@@ -36,6 +36,27 @@ class Storage {
     if (!this.#hasProperty(property)) return []
     return JSON.parse(localStorage.getItem(property))
   }
+
+  static removeAllFromProject(project) {
+    const values = JSON.parse(localStorage.getItem('todos'))
+    const filteredValues = values.filter((todo) => todo.project !== project) 
+
+    localStorage.setItem('todos', JSON.stringify(filteredValues))
+  }
+
+  static removeTodo(title, project) {
+    const values = JSON.parse(localStorage.getItem('todos'))
+    const filteredValues = values.filter((todo) => todo.title !== title && todo.project !== project)
+
+    localStorage.setItem('todos', JSON.stringify(filteredValues))
+  }
+
+  static removeProject(project) {
+    const values = JSON.parse(localStorage.getItem('projects'))
+    const filteredValues = values.filter((item) => item !== project)
+
+    localStorage.setItem('projects', JSON.stringify(filteredValues))
+  }
 }
 
 class Project {
@@ -103,10 +124,13 @@ class Todo {
   }
 
   static removeAllFromProject(project) {
+    Storage.removeAllFromProject(project)
+    Storage.removeProject(project)
     this.todos = this.todos.filter((todo) => todo.project !== project) 
   }
 
   static remove(title, project) {
+    Storage.removeTodo(title, project)
     this.todos = this.todos.filter((todo) => todo.title !== title && todo.project !== project)
   }
 }

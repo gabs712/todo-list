@@ -1,4 +1,4 @@
-import {Page, Project, Todo} from './logic'
+import {Page, Project, Todo, Storage} from './logic'
 import {format, parseISO} from 'date-fns';
 
 class PageDom {
@@ -81,7 +81,8 @@ class ProjectList {
     Project.remove(projectName)
 
     if (projectName === Page.currentProject) {
-      Page.currentProject = 'Home'
+      Page.setCurrentProject('Home')
+
       PageDom.refresh()
     } else {
       this.refresh()
